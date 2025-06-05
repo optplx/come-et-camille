@@ -32,10 +32,8 @@
             text-decoration: none;
             color: #555;
             font-size: 14px;
-        }
-
-        .hero {
-            background-image: url('images/come3.png');
+        }        .hero {
+            background-image: url('images/fond-header.png');
             background-size: cover;
             background-position: center;
             height: 500px;
@@ -46,6 +44,24 @@
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
             font-size: 36px;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .hero-overlay img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
         }
 
         .hero::after {
@@ -55,7 +71,8 @@
             left: 0;
             right: 0;
             text-align: center;
-        }        .products {
+            z-index: 2;
+        }.products {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 0;
@@ -105,12 +122,15 @@
         </nav>
     </header>
     <div class="hero">
+        <div class="hero-overlay">
+            <img src="images/come1.png" alt="Modèle">
+        </div>
     </div>
 
     <section class="products">
         <div class="product">
             <a href="ActionMan.html">
-                <img src="images\ActionMan.png" alt="Produit 1">
+                <img src="images/ActionMan.png" alt="Produit 1">
                 <h3>Action man</h3>
                 <p>€ 150</p>
             </a>
