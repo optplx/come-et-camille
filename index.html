@@ -45,7 +45,19 @@
             color: white;
             text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
             font-size: 36px;
-        }        .products {
+            position: relative;
+        }
+
+        .hero::after {
+            content: "Collection Été Homme";
+            position: absolute;
+            bottom: 80px;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+
+        .products {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
@@ -56,11 +68,11 @@
             border: 1px solid #ddd;
             padding: 10px;
             text-align: center;
-        }
-
-        .product img {
+        }        .product img {
             width: 100%;
-            height: auto;
+            height: 400px; /* Hauteur fixe pour toutes les images */
+            object-fit: contain; /* Garde les proportions et centre l'image */
+            object-position: center; /* Centre l'image verticalement */
         }
 
         .product h3 {
@@ -95,9 +107,7 @@
             <a href="#">Contact</a>
         </nav>
     </header>
-
     <div class="hero">
-        Collection Été Homme
     </div>
 
     <section class="products">
@@ -109,17 +119,17 @@
             </a>
         </div>
         <div class="product">
-            <img src="images\Badoit.jpg" alt="Produit 2">
+            <img src="images/Lego-star-wars.jpg" alt="Produit 2">
             <h3>Sabre laser alias Badoit</h3>
             <p>€ 100</p>
         </div>
         <div class="product">
-            <img src="images\Bar en palettes.jpg" alt="Produit 3">
+            <img src="images/Sabre-laser-star-wars.jpg" alt="Produit 3">
             <h3>Bar de prestige</h3>
             <p>€650</p>
         </div>
         <div class="product">
-            <img src="images\Couteaux.jpg" alt="Produit 4">
+            <img src="images/Pistolet-nerf.jpg" alt="Produit 4">
             <h3>Couteaux de cuisto</h3>
             <p>€350</p>
         </div>
