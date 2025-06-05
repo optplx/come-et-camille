@@ -81,12 +81,15 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 0;
             padding: 40px;
-        }        .product {
+        }
+
+        .product {
             border: 1px solid #f5f5f5;
             padding: 10px;
             text-align: center;
             margin: 0;
-            overflow: hidden; /* Pour contenir l'image qui grandit */
+            overflow: hidden;
+            /* Pour contenir l'image qui grandit */
         }
 
         .product img {
@@ -97,27 +100,31 @@
             /* Garde les proportions et centre l'image */
             object-position: center;
             /* Centre l'image verticalement */
-            transition: transform 0.3s ease; /* Animation douce pour le zoom */
+            transition: transform 0.3s ease;
+            /* Animation douce pour le zoom */
         }
-        
+
         .product:hover img {
-            transform: scale(1.1); /* Zoom de 10% au survol */
+            transform: scale(1.1);
+            /* Zoom de 10% au survol */
         }
 
         .product h3 {
             font-size: 16px;
             margin: 10px 0;
-        }        .product p {
+        }
+
+        .product p {
             font-size: 14px;
             color: #777;
         }
-        
+
         /* Style pour les liens dans les produits */
         .product a {
             text-decoration: none;
             color: inherit;
         }
-        
+
         footer {
             background-color: #f9f9f9;
             text-align: center;
@@ -126,8 +133,10 @@
             font-size: 12px;
             color: #999;
         }
-          /* Styles pour l'overlay vidéo et image */
-        .video-overlay, .image-overlay {
+
+        /* Styles pour l'overlay vidéo et image */
+        .video-overlay,
+        .image-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -140,26 +149,28 @@
             align-items: center;
             flex-direction: column;
         }
-        
-        .video-container, .image-container {
+
+        .video-container,
+        .image-container {
             width: 80%;
             max-width: 800px;
             position: relative;
         }
-        
+
         .video-container video {
             width: 100%;
             height: auto;
         }
-        
+
         .image-container img {
             width: 100%;
             height: auto;
             max-height: 80vh;
             object-fit: contain;
         }
-        
-        .close-video, .close-image {
+
+        .close-video,
+        .close-image {
             position: absolute;
             top: -40px;
             right: 0;
@@ -195,24 +206,21 @@
         <div class="product">
             <a href="pages/ActionMan.html">
                 <img src="images/ActionMan.png" alt="Produit 1">
-                <h3>Action man</h3>
-                <p>€ 150</p>
+                <h3>Action man pretty pretty four</h3>
             </a>
         </div>
         <div class="product">
             <img src="images/Lego-star-wars.jpg" alt="Produit 2">
-            <h3>Sabre laser alias Badoit</h3>
-            <p>€ 100</p>
+            <h3>Lego Star Wars</h3>
         </div>
         <div class="product">
             <img src="images/Sabre-laser-star-wars.jpg" alt="Produit 3">
-            <h3>Bar de prestige</h3>
-            <p>€650</p>
-        </div>        <div class="product">
+            <h3>Sabre laser</h3>
+        </div>
+        <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/nerf-plans.jpeg'); return false;">
-            <img src="images/nerf.jpeg" alt="Produit 4">
-                <h3>Nerf</h3>
-            <p>€350</p>
+                <img src="images/nerf.jpeg" alt="Produit 4">
+                <h3>Fusil Nerf</h3>
             </a>
         </div>
 
@@ -220,140 +228,119 @@
         <!-- section 2 -->
         <div class="product">
             <img src="images/Age-de-glace-sid.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>DVD L’âge de glace</h3>
         </div>
         <div class="product">
             <img src="images/grease-dvd.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>DVD Grease</h3>
         </div>
         <div class="product">
             <img src="images/The-Mask.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>DVD The Mask</h3>
         </div>
         <div class="product">
             <img src="images/West-Side-Story-1961.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>DVD West Side Story</h3>
         </div>
 
         <!-- section 3 -->
         <div class="product">
             <img src="images/Cagole.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Ensemble chic et choc</h3>
         </div>
         <div class="product">
             <img src="images/Bar-en-palettes.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Bar de prestige</h3>
         </div>
         <div class="product">
             <img src="images/Ukulele.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Guitare</h3>
         </div>
         <div class="product">
-            <img src="images/Batterie-musique.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <img src="images/batterie.png" alt="Produit 4">
+            <h3>Batterie</h3>
         </div>
 
         <!-- section 4 -->
         <div class="product">
             <img src="images/Bateau-laser.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Laser</h3>
         </div>
         <div class="product">
-            <img src="images/Boudha.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <img src="images/buddha.webp" alt="Produit 4">
+            <h3>Bouddha</h3>
         </div>
         <div class="product">
             <img src="images/Judo-ceinture-marron.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Ceinture marron</h3>
         </div>
         <div class="product">
             <img src="images/Skateboard.png" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Patin-planche</h3>
         </div>
-        
+
         <!-- section 5 -->
         <div class="product">
             <img src="images/Badoit.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Eau Badoit</h3>
         </div>
         <div class="product">
             <img src="images/Tomates.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Grappe de tomates</h3>
         </div>
         <div class="product">
             <img src="images/Couteaux.jpg" alt="Produit 4">
             <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
         </div>
         <div class="product">
             <img src="images/cactus.jpeg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
-        </div>       
+            <h3>Cactus stylé</h3>
+        </div>
 
         <!-- section 6 -->
         <div class="product">
             <img src="images/Drapeau-malaisie.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Drapeau Malaisie</h3>
         </div>
         <div class="product">
             <img src="images/Magie.jpg" alt="Produit 4">
             <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+        </div>
+        <div class="product">
+            <img src="images/Tong-Gucci.png" alt="Produit 4">
+            <h3>Tongs Gucci (chaussettes non incluses)</h3>
         </div>
         <div class="product">
             <img src="images/Tong-Gucci.png" alt="Produit 4">
             <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
-        </div>
-        <div class="product">
-            <img src="images/Tong-Gucci.png" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
         </div>
 
         <!-- section Mahaut -->
         <div class="product">
             <img src="images/Masque-licorne.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
+            <h3>Masque licorne</h3>
         </div>
         <div class="product">
             <img src="images/Masque-covid.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
-        </div>        <div class="product">
+            <h3>Masque tendance 2020</h3>
+        </div>
+        <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/come-zorro.jpeg'); return false;">
                 <img src="images/Zorro.jpg" alt="Produit 4">
-                <h3>Zorro</h3>
-                <p>€350</p>
-            </a>
-        </div><div class="product">
-            <a href="javascript:void(0);" onclick="openVideo(); return false;">
-                <img src="images/The-mask-masque.jpg" alt="Produit 4">
-                <h3>Le Masque Video</h3>
-                <p>€350</p>
+                <h3>Masque Zorro</h3>
             </a>
         </div>
-    </section>    <footer>
+        <div class="product">
+            <a href="javascript:void(0);" onclick="openVideo(); return false;">
+                <img src="images/The-mask-masque.jpg" alt="Produit 4">
+                <h3>Le Masque</h3>
+            </a>
+        </div>
+    </section>
+    <footer>
         &copy; 2025 Vive les mariés. Tous droits réservés.
     </footer>
-    
+
     <!-- Overlay pour la vidéo -->
     <div class="video-overlay" id="videoOverlay">
         <div class="video-container">
@@ -362,7 +349,8 @@
                 <source src="images/Montage-come-the-mask_short.mp4" type="video/mp4">
                 Votre navigateur ne prend pas en charge la vidéo.
             </video>
-        </div>    </div>
+        </div>
+    </div>
 
     <!-- Overlay pour l'image -->
     <div class="image-overlay" id="imageOverlay">
@@ -370,42 +358,43 @@
             <button class="close-image" onclick="closeImage()">&times;</button>
             <img id="overlayImage" src="" alt="Image en plein écran">
         </div>
-    </div>    <script>
+    </div>
+    <script>
         // Fonction pour ouvrir la vidéo
         function openVideo() {
             document.getElementById('videoOverlay').style.display = 'flex';
             document.getElementById('videoPlayer').play();
         }
-        
+
         // Fonction pour fermer la vidéo
         function closeVideo() {
             document.getElementById('videoOverlay').style.display = 'none';
             document.getElementById('videoPlayer').pause();
         }
-        
+
         // Fonction pour ouvrir l'image
         function openImage(imageSrc) {
             document.getElementById('overlayImage').src = imageSrc;
             document.getElementById('imageOverlay').style.display = 'flex';
         }
-        
+
         // Fonction pour fermer l'image
         function closeImage() {
             document.getElementById('imageOverlay').style.display = 'none';
         }
-        
+
         // Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Pour l'overlay vidéo
-            document.getElementById('videoOverlay').addEventListener('click', function(e) {
+            document.getElementById('videoOverlay').addEventListener('click', function (e) {
                 // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
                 if (e.target === this) {
                     closeVideo();
                 }
             });
-            
+
             // Pour l'overlay image
-            document.getElementById('imageOverlay').addEventListener('click', function(e) {
+            document.getElementById('imageOverlay').addEventListener('click', function (e) {
                 // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
                 if (e.target === this) {
                     closeImage();
