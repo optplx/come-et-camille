@@ -126,9 +126,8 @@
             font-size: 12px;
             color: #999;
         }
-        
-        /* Styles pour l'overlay vidéo */
-        .video-overlay {
+          /* Styles pour l'overlay vidéo et image */
+        .video-overlay, .image-overlay {
             display: none;
             position: fixed;
             top: 0;
@@ -142,7 +141,7 @@
             flex-direction: column;
         }
         
-        .video-container {
+        .video-container, .image-container {
             width: 80%;
             max-width: 800px;
             position: relative;
@@ -153,7 +152,14 @@
             height: auto;
         }
         
-        .close-video {
+        .image-container img {
+            width: 100%;
+            height: auto;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+        
+        .close-video, .close-image {
             position: absolute;
             top: -40px;
             right: 0;
@@ -330,12 +336,13 @@
             <img src="images/Masque-covid.jpg" alt="Produit 4">
             <h3>Couteaux de cuisto</h3>
             <p>€350</p>
-        </div>
-        <div class="product">
-            <img src="images/Zorro.jpg" alt="Produit 4">
-            <h3>Couteaux de cuisto</h3>
-            <p>€350</p>
         </div>        <div class="product">
+            <a href="javascript:void(0);" onclick="openImage('images/come-zorro.jpeg'); return false;">
+                <img src="images/Zorro.jpg" alt="Produit 4">
+                <h3>Zorro</h3>
+                <p>€350</p>
+            </a>
+        </div><div class="product">
             <a href="javascript:void(0);" onclick="openVideo(); return false;">
                 <img src="images/The-mask-masque.jpg" alt="Produit 4">
                 <h3>Le Masque Video</h3>
@@ -354,10 +361,15 @@
                 <source src="images/Montage-come-the-mask_short.mp4" type="video/mp4">
                 Votre navigateur ne prend pas en charge la vidéo.
             </video>
-        </div>
-    </div>
+        </div>    </div>
 
-    <script>
+    <!-- Overlay pour l'image -->
+    <div class="image-overlay" id="imageOverlay">
+        <div class="image-container">
+            <button class="close-image" onclick="closeImage()">&times;</button>
+            <img id="overlayImage" src="" alt="Image en plein écran">
+        </div>
+    </div>    <script>
         // Fonction pour ouvrir la vidéo
         function openVideo() {
             document.getElementById('videoOverlay').style.display = 'flex';
@@ -369,6 +381,36 @@
             document.getElementById('videoOverlay').style.display = 'none';
             document.getElementById('videoPlayer').pause();
         }
+        
+        // Fonction pour ouvrir l'image
+        function openImage(imageSrc) {
+            document.getElementById('overlayImage').src = imageSrc;
+            document.getElementById('imageOverlay').style.display = 'flex';
+        }
+        
+        // Fonction pour fermer l'image
+        function closeImage() {
+            document.getElementById('imageOverlay').style.display = 'none';
+        }
+        
+        // Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
+        document.addEventListener('DOMContentLoaded', function() {
+            // Pour l'overlay vidéo
+            document.getElementById('videoOverlay').addEventListener('click', function(e) {
+                // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
+                if (e.target === this) {
+                    closeVideo();
+                }
+            });
+            
+            // Pour l'overlay image
+            document.getElementById('imageOverlay').addEventListener('click', function(e) {
+                // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
+                if (e.target === this) {
+                    closeImage();
+                }
+            });
+        });
     </script>
 </body>
 
