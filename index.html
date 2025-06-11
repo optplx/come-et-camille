@@ -440,14 +440,22 @@
     </section>
     <footer>
         &copy; 2025 Vive les mariés. Tous droits réservés.
-    </footer>
-
-    <!-- Overlay pour la vidéo -->
+    </footer>    <!-- Overlay pour la vidéo -->
     <div class="video-overlay" id="videoOverlay">
         <div class="video-container">
             <button class="close-video" onclick="closeVideo()">&times;</button>
             <video controls id="videoPlayer">
                 <source src="images/Montage-come-the-mask_short.mp4" type="video/mp4">
+                Votre navigateur ne prend pas en charge la vidéo.
+            </video>
+        </div>
+    </div> 
+      <!-- Overlay pour la vidéo du bouton vendu -->
+    <div class="video-overlay" id="venduVideoOverlay">
+        <div class="video-container">
+            <button class="close-video" onclick="closeVenduVideo()">&times;</button>
+            <video controls id="venduVideoPlayer">
+                <source src="images/t-bonne.mp4" type="video/mp4">
                 Votre navigateur ne prend pas en charge la vidéo.
             </video>
         </div>
@@ -482,6 +490,12 @@
         function closeVideo() {
             document.getElementById('videoOverlay').style.display = 'none';
             document.getElementById('videoPlayer').pause();
+        }
+        
+        // Fonction pour fermer la vidéo du bouton vendu
+        function closeVenduVideo() {
+            document.getElementById('venduVideoOverlay').style.display = 'none';
+            document.getElementById('venduVideoPlayer').pause();
         }
 
         // Fonction pour ouvrir l'image avec carousel
@@ -596,12 +610,19 @@
             // Vider le carousel
             carouselImages = [];
         }        // Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
-        document.addEventListener('DOMContentLoaded', function () {
-            // Pour l'overlay vidéo
+        document.addEventListener('DOMContentLoaded', function () {            // Pour l'overlay vidéo
             document.getElementById('videoOverlay').addEventListener('click', function (e) {
                 // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
                 if (e.target === this) {
                     closeVideo();
+                }
+            });
+            
+            // Pour l'overlay vidéo du bouton vendu
+            document.getElementById('venduVideoOverlay').addEventListener('click', function (e) {
+                // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
+                if (e.target === this) {
+                    closeVenduVideo();
                 }
             });
 
@@ -611,12 +632,11 @@
                 if (e.target === this) {
                     closeImage();
                 }
-            });
-            
-            // Écouteur d'événement pour le bouton vendu
+            });              // Écouteur d'événement pour le bouton vendu
             document.getElementById('venduButton').addEventListener('click', function() {
-                alert('Cet article a été vendu aux enchères!');
-                // Vous pouvez remplacer cette alerte par une autre action
+                // Ouvrir la vidéo spécifique pour le bouton vendu
+                document.getElementById('venduVideoOverlay').style.display = 'flex';
+                document.getElementById('venduVideoPlayer').play();
             });
 
             // Ajouter un écouteur d'événement pour les touches du clavier
@@ -630,12 +650,17 @@
                     } else if (e.key === "Escape") {
                         closeImage();
                     }
-                }
-
-                // Si l'overlay vidéo est ouvert
+                }                // Si l'overlay vidéo est ouvert
                 if (document.getElementById('videoOverlay').style.display === 'flex') {
                     if (e.key === "Escape") {
                         closeVideo();
+                    }
+                }
+                
+                // Si l'overlay vidéo du bouton vendu est ouvert
+                if (document.getElementById('venduVideoOverlay').style.display === 'flex') {
+                    if (e.key === "Escape") {
+                        closeVenduVideo();
                     }
                 }
             });
