@@ -412,9 +412,8 @@
         <div class="product">
             <img src="images/Tong-Gucci-d.png">
             <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>
-        </div>        <!-- section Mahaut -->
-        <div class="product">
-            <a href="javascript:void(0);" onclick="openImage('images/cagole-come.JPG'); return false;">
+        </div>        <!-- section Mahaut -->        <div class="product">
+            <a href="javascript:void(0);" onclick="openImage('images/Masque-licorne.jpg'); return false;">
                 <img src="images/Masque-licorne.jpg">
                 <h3>Masque licorne</h3>
             </a>
@@ -453,7 +452,7 @@
         <div class="video-container">
             <button class="close-video" onclick="closeVenduVideo()">&times;</button>
             <video controls id="venduVideoPlayer">
-                <source src="images/t-bonne.mp4" type="video/mp4">
+                <source src="images/vendu.mp4" type="video/mp4">
                 Votre navigateur ne prend pas en charge la vidéo.
             </video>
         </div>
@@ -498,9 +497,7 @@
             const player = document.getElementById('venduVideoPlayer');
             player.pause();
             player.currentTime = 0; // Remettre la vidéo à zéro
-        }
-
-        // Fonction pour ouvrir l'image avec carousel
+        }        // Fonction pour ouvrir l'image avec carousel
         function openImage(imageSrc) {
             // Si c'est Zorro, on ajoute Zorro et Batman au carousel
             if (imageSrc === 'images/come-zorro.jpeg') {
@@ -513,6 +510,10 @@
             // Si c'est Buddha, on ajoute les images de bouddha au carousel
             else if (imageSrc === 'images/buddha.webp') {
                 carouselImages = ['images/boudha1.jpeg', 'images/boudha2.jpeg'];
+            }
+            // Si c'est le masque licorne, on ajoute la vidéo au carousel
+            else if (imageSrc === 'images/Masque-licorne.jpg') {
+                carouselImages = ['images/Masque-licorne.jpg', 'video:images/dubsmash-licorne.mp4'];
             } else {
                 // Pour les autres images, on affiche juste l'image demandée
                 carouselImages = [imageSrc];
@@ -535,16 +536,35 @@
 
             // Vider les conteneurs
             carouselImagesContainer.innerHTML = '';
-            carouselNav.innerHTML = '';
-
-            // Ajouter les images
+            carouselNav.innerHTML = '';            // Ajouter les images
             carouselImages.forEach((src, index) => {
-                // Créer l'élément image
-                const img = document.createElement('img');
-                img.src = src;
-                img.alt = 'Image ' + (index + 1);
-                img.className = 'carousel-image' + (index === currentImageIndex ? ' active' : '');
-                carouselImagesContainer.appendChild(img);
+                // Vérifier si c'est une vidéo (préfixée par "video:")
+                if (src.startsWith('video:')) {
+                    // Créer l'élément vidéo
+                    const videoContainer = document.createElement('div');
+                    videoContainer.className = 'carousel-image' + (index === currentImageIndex ? ' active' : '');
+                    
+                    const video = document.createElement('video');
+                    video.src = src.substring(6); // Enlever le préfixe "video:"
+                    video.controls = true;
+                    video.style.width = '100%';
+                    video.style.height = 'auto';
+                    
+                    videoContainer.appendChild(video);
+                    carouselImagesContainer.appendChild(videoContainer);
+                    
+                    // Lancer la lecture de la vidéo si elle est active
+                    if (index === currentImageIndex) {
+                        video.play();
+                    }
+                } else {
+                    // Créer l'élément image
+                    const img = document.createElement('img');
+                    img.src = src;
+                    img.alt = 'Image ' + (index + 1);
+                    img.className = 'carousel-image' + (index === currentImageIndex ? ' active' : '');
+                    carouselImagesContainer.appendChild(img);
+                }
 
                 // Créer le point de navigation
                 if (carouselImages.length > 1) {
@@ -568,17 +588,28 @@
                 prevButton.style.display = 'block';
                 nextButton.style.display = 'block';
             }
-        }
-
-        // Fonction pour afficher une image spécifique
+        }        // Fonction pour afficher une image spécifique
         function showImage(index) {
             // Mettre à jour l'index courant
             currentImageIndex = index;
 
-            // Mettre à jour les classes des images
-            const images = document.querySelectorAll('.carousel-image');
-            images.forEach((img, i) => {
-                img.className = 'carousel-image' + (i === currentImageIndex ? ' active' : '');
+            // Mettre à jour les classes des images et gérer les vidéos
+            const carouselItems = document.querySelectorAll('.carousel-image');
+            carouselItems.forEach((item, i) => {
+                item.className = 'carousel-image' + (i === currentImageIndex ? ' active' : '');
+                
+                // Si c'est une vidéo
+                const video = item.querySelector('video');
+                if (video) {
+                    if (i === currentImageIndex) {
+                        // Lancer la lecture si c'est l'élément actif
+                        video.play();
+                    } else {
+                        // Mettre en pause si ce n'est pas l'élément actif
+                        video.pause();
+                        video.currentTime = 0;
+                    }
+                }
             });
 
             // Mettre à jour les classes des points de navigation
@@ -600,14 +631,20 @@
             let newIndex = currentImageIndex + 1;
             if (newIndex >= carouselImages.length) newIndex = 0;
             showImage(newIndex);
-        }
-
-        // Fonction pour fermer l'image
+        }        // Fonction pour fermer l'image
         function closeImage() {
             document.getElementById('imageOverlay').style.display = 'none';
+            
+            // Mettre en pause toutes les vidéos
+            const videos = document.querySelectorAll('.carousel-image video');
+            videos.forEach(video => {
+                video.pause();
+                video.currentTime = 0;
+            });
+            
             // Vider le carousel
             carouselImages = [];
-        }        // Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
+        }// Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
         document.addEventListener('DOMContentLoaded', function () {            // Pour l'overlay vidéo
             document.getElementById('videoOverlay').addEventListener('click', function (e) {
                 // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
