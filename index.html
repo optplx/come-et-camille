@@ -337,7 +337,7 @@
 
         <!-- section 3 -->
         <div class="product">
-            <a href="javascript:void(0);" onclick="openImage('images/Cagole.jpg'); return false;">
+            <a href="javascript:void(0);" onclick="openImage('images/ipod.JPG'); return false;">
                 <img src="images/Cagole.jpg">
                 <h3>Ensemble chic et choc</h3>
             </a>
@@ -412,12 +412,12 @@
         <div class="product">
             <img src="images/Tong-Gucci-d.png">
             <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>
-        </div>
-
-        <!-- section Mahaut -->
+        </div>        <!-- section Mahaut -->
         <div class="product">
-            <img src="images/Masque-licorne.jpg">
-            <h3>Masque licorne</h3>
+            <a href="javascript:void(0);" onclick="openImage('images/cagole-come.JPG'); return false;">
+                <img src="images/Masque-licorne.jpg">
+                <h3>Masque licorne</h3>
+            </a>
         </div>
         <div class="product">
             <img src="images/Masque-covid.jpg">
@@ -509,11 +509,7 @@
             // Si c'est Judo, on ajoute les images de judo au carousel
             else if (imageSrc === 'images/Judo-ceinture-marron.jpg') {
                 carouselImages = ['images/judo2.png', 'images/judo.jpeg'];
-            }
-            // Si c'est Cagole, on ajoute cagole-come et ipod au carousel
-            else if (imageSrc === 'images/Cagole.jpg') {
-                carouselImages = ['images/ipod.JPG', 'images/cagole-come.JPG'];
-            }
+            }            
             // Si c'est Buddha, on ajoute les images de bouddha au carousel
             else if (imageSrc === 'images/buddha.webp') {
                 carouselImages = ['images/boudha1.jpeg', 'images/boudha2.jpeg'];
