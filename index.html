@@ -237,9 +237,7 @@
 
         .carousel-button.next {
             right: 10px;
-        }
-
-        .close-video,
+        }        .close-video,
         .close-image {
             position: absolute;
             top: -40px;
@@ -250,11 +248,36 @@
             background: none;
             border: none;
             outline: none;
+        }          /* Style pour le bouton flottant "vendu" */
+        .floating-button {
+            position: fixed;
+            top: 0px;
+            right: 20px;
+            z-index: 100;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            background: transparent;
+            /* Suppression du border-radius et de l'overflow hidden */
+        }
+        .floating-button img {
+            width: 140px;
+            height: 140px;
+            display: block;
+            object-fit: cover; /* changed from contain to cover */
+            /* L'image affiche son fond transparent naturellement */
+        }
+        
+        .floating-button:hover {
+            transform: scale(1.4);
         }
     </style>
 </head>
 
 <body>
+    <!-- Bouton flottant "vendu" -->    <div class="floating-button" id="venduButton">
+        <img src="images/logo-encheres.png" alt="Vendu aux enchères">
+    </div>
+    
     <header>
         <h1>GOUTCHI</h1>
         <nav>
@@ -386,11 +409,11 @@
         </div>
         <div class="product">
             <img src="images/Tong-Gucci-g.png">
-            <h3>Tong Gucci pied gauche - chaussette non incluse</h3>
+            <h3>Tong Goutchi pied gauche - chaussette non incluse</h3>
         </div>
         <div class="product">
             <img src="images/Tong-Gucci-d.png">
-            <h3>Tong Gucci pied droit - chaussette non incluse aussi</h3>
+            <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>
         </div>
 
         <!-- section Mahaut -->
@@ -572,9 +595,7 @@
             document.getElementById('imageOverlay').style.display = 'none';
             // Vider le carousel
             carouselImages = [];
-        }
-
-        // Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
+        }        // Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
         document.addEventListener('DOMContentLoaded', function () {
             // Pour l'overlay vidéo
             document.getElementById('videoOverlay').addEventListener('click', function (e) {
@@ -590,6 +611,12 @@
                 if (e.target === this) {
                     closeImage();
                 }
+            });
+            
+            // Écouteur d'événement pour le bouton vendu
+            document.getElementById('venduButton').addEventListener('click', function() {
+                alert('Cet article a été vendu aux enchères!');
+                // Vous pouvez remplacer cette alerte par une autre action
             });
 
             // Ajouter un écouteur d'événement pour les touches du clavier
