@@ -489,13 +489,17 @@
         }        // Fonction pour fermer la vidéo
         function closeVideo() {
             document.getElementById('videoOverlay').style.display = 'none';
-            document.getElementById('videoPlayer').pause();
+            const player = document.getElementById('videoPlayer');
+            player.pause();
+            player.currentTime = 0; // Remettre la vidéo à zéro
         }
         
         // Fonction pour fermer la vidéo du bouton vendu
         function closeVenduVideo() {
             document.getElementById('venduVideoOverlay').style.display = 'none';
-            document.getElementById('venduVideoPlayer').pause();
+            const player = document.getElementById('venduVideoPlayer');
+            player.pause();
+            player.currentTime = 0; // Remettre la vidéo à zéro
         }
 
         // Fonction pour ouvrir l'image avec carousel
