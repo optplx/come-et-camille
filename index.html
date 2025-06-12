@@ -149,7 +149,9 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-        }        .video-container,
+        }
+
+        .video-container,
         .image-container {
             width: 90%;
             max-width: 1200px;
@@ -235,7 +237,9 @@
 
         .carousel-button.next {
             right: 10px;
-        }        .close-video,
+        }
+
+        .close-video,
         .close-image {
             position: absolute;
             top: -40px;
@@ -246,7 +250,9 @@
             background: none;
             border: none;
             outline: none;
-        }          /* Style pour le bouton flottant "vendu" */
+        }
+
+        /* Style pour le bouton flottant "vendu" */
         .floating-button {
             position: fixed;
             top: 0px;
@@ -257,14 +263,16 @@
             background: transparent;
             /* Suppression du border-radius et de l'overflow hidden */
         }
+
         .floating-button img {
             width: 140px;
             height: 140px;
             display: block;
-            object-fit: cover; /* changed from contain to cover */
+            object-fit: cover;
+            /* changed from contain to cover */
             /* L'image affiche son fond transparent naturellement */
         }
-        
+
         .floating-button:hover {
             transform: scale(1.4);
         }
@@ -272,10 +280,11 @@
 </head>
 
 <body>
-    <!-- Bouton flottant "vendu" -->    <div class="floating-button" id="venduButton">
+    <!-- Bouton flottant "vendu" -->
+    <div class="floating-button" id="venduButton">
         <img src="images/logo-encheres.png" alt="Vendu aux enchères">
     </div>
-    
+
     <header>
         <h1>GOUTCHI</h1>
         <nav>
@@ -292,7 +301,7 @@
         </div>
     </div>
 
-    <section class="products">        <!-- section 1 -->
+    <section class="products"> <!-- section 1 -->
         <div class="product">
             <a href="javascript:void(0);" onclick="openActionManVideo(); return false;">
                 <img src="images/ActionMan.png">
@@ -329,8 +338,8 @@
         </div>
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/west-side-story.webp'); return false;">
-            <img src="images/West-Side-Story-1961.jpg">
-            <h3>DVD West Side Story</h3>
+                <img src="images/West-Side-Story-1961.jpg">
+                <h3>DVD West Side Story</h3>
             </a>
         </div>
 
@@ -338,7 +347,8 @@
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/ipod.JPG'); return false;">
                 <img src="images/Cagole.jpg">
-                <h3>Ensemble chic et choc</h3>            </a>
+                <h3>Ensemble chic et choc</h3>
+            </a>
         </div>
         <div class="product">
             <a href="javascript:void(0);" onclick="openBarVideo(); return false;">
@@ -361,7 +371,8 @@
         <div class="product">
             <img src="images/Bateau-laser.jpg">
             <h3>Laser</h3>
-        </div>        <div class="product">
+        </div>
+        <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/buddha.webp'); return false;">
                 <img src="images/buddha.webp">
                 <h3>Bouddha</h3>
@@ -411,7 +422,9 @@
         </div>
         <div class="product">
             <img src="images/Tong-Gucci-d.png">
-            <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>        </div>        <!-- section Mahaut -->        <div class="product">
+            <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>
+        </div> <!-- section Mahaut -->
+        <div class="product">
             <a href="javascript:void(0);" onclick="openLicorneVideo(); return false;">
                 <img src="images/Masque-licorne.jpg">
                 <h3>Masque licorne</h3>
@@ -436,7 +449,7 @@
     </section>
     <footer>
         &copy; 2025 Vive les mariés. Tous droits réservés.
-    </footer>    <!-- Overlay pour la vidéo -->
+    </footer> <!-- Overlay pour la vidéo -->
     <div class="video-overlay" id="videoOverlay">
         <div class="video-container">
             <button class="close-video" onclick="closeVideo()">&times;</button>
@@ -445,8 +458,8 @@
                 Votre navigateur ne prend pas en charge la vidéo.
             </video>
         </div>
-    </div> 
-      <!-- Overlay pour la vidéo du bouton vendu -->
+    </div>
+    <!-- Overlay pour la vidéo du bouton vendu -->
     <div class="video-overlay" id="venduVideoOverlay">
         <div class="video-container">
             <button class="close-video" onclick="closeVenduVideo()">&times;</button>
@@ -455,8 +468,8 @@
                 Votre navigateur ne prend pas en charge la vidéo.
             </video>
         </div>
-    </div> 
-    
+    </div>
+
     <!-- Overlay pour l'image avec carousel -->
     <div class="image-overlay" id="imageOverlay">
         <div class="image-container">
@@ -482,10 +495,10 @@
             const videoPlayer = document.getElementById('videoPlayer');
             const source = videoPlayer.querySelector('source');
             source.src = 'images/Montage-come-the-mask_short.mp4';
-            
+
             // Recharger la vidéo pour appliquer la nouvelle source
             videoPlayer.load();
-            
+
             // Afficher l'overlay et lancer la vidéo
             document.getElementById('videoOverlay').style.display = 'flex';
             videoPlayer.play();
@@ -496,51 +509,51 @@
             player.pause();
             player.currentTime = 0; // Remettre la vidéo à zéro
         }
-          // Fonction pour ouvrir la vidéo Action Man
+        // Fonction pour ouvrir la vidéo Action Man
         function openActionManVideo() {
             // Changer la source de la vidéo
             const videoPlayer = document.getElementById('videoPlayer');
             const source = videoPlayer.querySelector('source');
             source.src = 'images/Dubsmash-beau-goss.mp4';
-            
+
             // Recharger la vidéo pour appliquer la nouvelle source
             videoPlayer.load();
-            
+
             // Afficher l'overlay et lancer la vidéo
             document.getElementById('videoOverlay').style.display = 'flex';
             videoPlayer.play();
         }
-        
+
         // Fonction pour ouvrir la vidéo Astérix (bar)
         function openBarVideo() {
             // Changer la source de la vidéo
             const videoPlayer = document.getElementById('videoPlayer');
             const source = videoPlayer.querySelector('source');
             source.src = 'images/Dubsmash-asterix.mp4';
-            
+
             // Recharger la vidéo pour appliquer la nouvelle source
             videoPlayer.load();
-            
+
             // Afficher l'overlay et lancer la vidéo
             document.getElementById('videoOverlay').style.display = 'flex';
             videoPlayer.play();
         }
-        
+
         // Fonction pour ouvrir la vidéo Licorne
         function openLicorneVideo() {
             // Changer la source de la vidéo
             const videoPlayer = document.getElementById('videoPlayer');
             const source = videoPlayer.querySelector('source');
             source.src = 'images/dubsmash-licorne.mp4';
-            
+
             // Recharger la vidéo pour appliquer la nouvelle source
             videoPlayer.load();
-            
+
             // Afficher l'overlay et lancer la vidéo
             document.getElementById('videoOverlay').style.display = 'flex';
             videoPlayer.play();
         }
-        
+
         // Fonction pour fermer la vidéo du bouton vendu
         function closeVenduVideo() {
             document.getElementById('venduVideoOverlay').style.display = 'none';
@@ -556,7 +569,7 @@
             // Si c'est Judo, on ajoute les images de judo au carousel
             else if (imageSrc === 'images/Judo-ceinture-marron.jpg') {
                 carouselImages = ['images/judo2.png', 'images/judo.jpeg'];
-            }            
+            }
             // Si c'est Buddha, on ajoute les images de bouddha au carousel
             else if (imageSrc === 'images/buddha.webp') {
                 carouselImages = ['images/boudha1.jpeg', 'images/boudha2.jpeg'];
@@ -589,16 +602,16 @@
                     // Créer l'élément vidéo
                     const videoContainer = document.createElement('div');
                     videoContainer.className = 'carousel-image' + (index === currentImageIndex ? ' active' : '');
-                    
+
                     const video = document.createElement('video');
                     video.src = src.substring(6); // Enlever le préfixe "video:"
                     video.controls = true;
                     video.style.width = '100%';
                     video.style.height = 'auto';
-                    
+
                     videoContainer.appendChild(video);
                     carouselImagesContainer.appendChild(videoContainer);
-                    
+
                     // Lancer la lecture de la vidéo si elle est active
                     if (index === currentImageIndex) {
                         video.play();
@@ -643,7 +656,7 @@
             const carouselItems = document.querySelectorAll('.carousel-image');
             carouselItems.forEach((item, i) => {
                 item.className = 'carousel-image' + (i === currentImageIndex ? ' active' : '');
-                
+
                 // Si c'est une vidéo
                 const video = item.querySelector('video');
                 if (video) {
@@ -680,14 +693,14 @@
         }        // Fonction pour fermer l'image
         function closeImage() {
             document.getElementById('imageOverlay').style.display = 'none';
-            
+
             // Mettre en pause toutes les vidéos
             const videos = document.querySelectorAll('.carousel-image video');
             videos.forEach(video => {
                 video.pause();
                 video.currentTime = 0;
             });
-            
+
             // Vider le carousel
             carouselImages = [];
         }// Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
@@ -698,7 +711,7 @@
                     closeVideo();
                 }
             });
-            
+
             // Pour l'overlay vidéo du bouton vendu
             document.getElementById('venduVideoOverlay').addEventListener('click', function (e) {
                 // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
@@ -714,7 +727,7 @@
                     closeImage();
                 }
             });              // Écouteur d'événement pour le bouton vendu
-            document.getElementById('venduButton').addEventListener('click', function() {
+            document.getElementById('venduButton').addEventListener('click', function () {
                 // Ouvrir la vidéo spécifique pour le bouton vendu
                 document.getElementById('venduVideoOverlay').style.display = 'flex';
                 document.getElementById('venduVideoPlayer').play();
@@ -737,7 +750,7 @@
                         closeVideo();
                     }
                 }
-                
+
                 // Si l'overlay vidéo du bouton vendu est ouvert
                 if (document.getElementById('venduVideoOverlay').style.display === 'flex') {
                     if (e.key === "Escape") {
