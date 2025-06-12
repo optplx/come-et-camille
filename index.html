@@ -411,9 +411,8 @@
         </div>
         <div class="product">
             <img src="images/Tong-Gucci-d.png">
-            <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>
-        </div>        <!-- section Mahaut -->        <div class="product">
-            <a href="javascript:void(0);" onclick="openImage('images/Masque-licorne.jpg'); return false;">
+            <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>        </div>        <!-- section Mahaut -->        <div class="product">
+            <a href="javascript:void(0);" onclick="openLicorneVideo(); return false;">
                 <img src="images/Masque-licorne.jpg">
                 <h3>Masque licorne</h3>
             </a>
@@ -527,6 +526,21 @@
             videoPlayer.play();
         }
         
+        // Fonction pour ouvrir la vidéo Licorne
+        function openLicorneVideo() {
+            // Changer la source de la vidéo
+            const videoPlayer = document.getElementById('videoPlayer');
+            const source = videoPlayer.querySelector('source');
+            source.src = 'images/dubsmash-licorne.mp4';
+            
+            // Recharger la vidéo pour appliquer la nouvelle source
+            videoPlayer.load();
+            
+            // Afficher l'overlay et lancer la vidéo
+            document.getElementById('videoOverlay').style.display = 'flex';
+            videoPlayer.play();
+        }
+        
         // Fonction pour fermer la vidéo du bouton vendu
         function closeVenduVideo() {
             document.getElementById('venduVideoOverlay').style.display = 'none';
@@ -546,10 +560,6 @@
             // Si c'est Buddha, on ajoute les images de bouddha au carousel
             else if (imageSrc === 'images/buddha.webp') {
                 carouselImages = ['images/boudha1.jpeg', 'images/boudha2.jpeg'];
-            }
-            // Si c'est le masque licorne, on ajoute la vidéo au carousel
-            else if (imageSrc === 'images/Masque-licorne.jpg') {
-                carouselImages = ['images/Masque-licorne.jpg', 'video:images/dubsmash-licorne.mp4'];
             } else {
                 // Pour les autres images, on affiche juste l'image demandée
                 carouselImages = [imageSrc];
