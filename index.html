@@ -325,8 +325,10 @@
 
         <!-- section 2 -->
         <div class="product">
-            <img src="images/Age-de-glace-sid.jpg">
-            <h3>DVD L’âge de glace</h3>
+            <a href="javascript:void(0);" onclick="openImage('images/age-de-glace-sid.jpg'); return false;">
+                <img src="images/Age-de-glace-sid.jpg">
+                <h3>DVD L'âge de glace</h3>
+            </a>
         </div>
         <div class="product">
             <img src="images/grease-dvd.jpg">
@@ -560,7 +562,8 @@
             const player = document.getElementById('venduVideoPlayer');
             player.pause();
             player.currentTime = 0; // Remettre la vidéo à zéro
-        }        // Fonction pour ouvrir l'image avec carousel
+        }
+        // Fonction pour ouvrir l'image avec carousel
         function openImage(imageSrc) {
             // Si c'est Zorro, on ajoute Zorro et Batman au carousel
             if (imageSrc === 'images/come-zorro.jpeg') {
@@ -569,6 +572,9 @@
             // Si c'est Judo, on ajoute les images de judo au carousel
             else if (imageSrc === 'images/Judo-ceinture-marron.jpg') {
                 carouselImages = ['images/judo2.png', 'images/judo.jpeg'];
+            }
+            else if (imageSrc === 'images/age-de-glace-sid.jpg') {
+                carouselImages = ['images/sid.png'];
             }
             // Si c'est Buddha, on ajoute les images de bouddha au carousel
             else if (imageSrc === 'images/buddha.webp') {
