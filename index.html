@@ -297,7 +297,7 @@
     </header>
     <div class="hero">
         <div class="hero-overlay">
-            <img src="images/come1.png" alt="Modèle">
+            <img src="images/come1.png" alt="Modèle" onclick="openImage('images/naissance.jpg'); return false;">
         </div>
     </div>
 
@@ -325,7 +325,7 @@
 
         <!-- section 2 -->
         <div class="product">
-            <a href="javascript:void(0);" onclick="openImage('images/age-de-glace-sid.jpg'); return false;">
+            <a href="javascript:void(0);" onclick="openImage('images/sid.png'); return false;">
                 <img src="images/Age-de-glace-sid.jpg">
                 <h3>DVD L'âge de glace</h3>
             </a>
@@ -339,10 +339,8 @@
             <h3>DVD The Mask</h3>
         </div>
         <div class="product">
-            <a href="javascript:void(0);" onclick="openImage('images/west-side-story.webp'); return false;">
                 <img src="images/West-Side-Story-1961.jpg">
                 <h3>DVD West Side Story</h3>
-            </a>
         </div>
 
         <!-- section 3 -->
@@ -433,8 +431,10 @@
             </a>
         </div>
         <div class="product">
-            <img src="images/Masque-covid.jpg">
-            <h3>Masque tendance 2020</h3>
+            <a href="javascript:void(0);" onclick="openImage('images/camille.png'); return false;">
+                <img src="images/Masque-covid.jpg">
+                <h3>Masque tendance 2020</h3>
+            </a>
         </div>
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/come-zorro.jpeg'); return false;">
@@ -563,20 +563,15 @@
             player.pause();
             player.currentTime = 0; // Remettre la vidéo à zéro
         }
+
         // Fonction pour ouvrir l'image avec carousel
         function openImage(imageSrc) {
-            // Si c'est Zorro, on ajoute Zorro et Batman au carousel
             if (imageSrc === 'images/come-zorro.jpeg') {
                 carouselImages = ['images/come-zorro.jpeg', 'images/batman.jpeg', 'images/zorro2.jpeg'];
             }
-            // Si c'est Judo, on ajoute les images de judo au carousel
             else if (imageSrc === 'images/Judo-ceinture-marron.jpg') {
                 carouselImages = ['images/judo2.png', 'images/judo.jpeg'];
             }
-            else if (imageSrc === 'images/age-de-glace-sid.jpg') {
-                carouselImages = ['images/sid.png'];
-            }
-            // Si c'est Buddha, on ajoute les images de bouddha au carousel
             else if (imageSrc === 'images/buddha.webp') {
                 carouselImages = ['images/boudha1.jpeg', 'images/boudha2.jpeg'];
             } else {
