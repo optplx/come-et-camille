@@ -276,6 +276,108 @@
         .floating-button:hover {
             transform: scale(1.4);
         }
+
+        /* Style pour le popup de commentaire */
+        .comment-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .comment-popup {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .comment-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .comment-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 30px;
+            border: 6px solid #f0f0f0;
+        }
+
+        .comment-user {
+            flex: 1;
+        }
+
+        .comment-username {
+            font-weight: bold;
+            font-size: 32px;
+            color: #333;
+            margin: 0;
+        }
+
+        .comment-date {
+            font-size: 22px;
+            color: #888;
+            margin: 8px 0 0 0;
+        }
+
+        .comment-stars {
+            color: #ffd700;
+            font-size: 35px;
+            margin-bottom: 30px;
+        }
+
+        .comment-text {
+            font-size: 32px;
+            line-height: 1.5;
+            color: #333;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+
+        .comment-actions {
+            display: flex;
+            gap: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .comment-action {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .comment-action:hover {
+            color: #007bff;
+        }
+
+        .close-comment {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            color: #999;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            outline: none;
+        }
+
+        .close-comment:hover {
+            color: #333;
+        }
     </style>
 </head>
 
@@ -431,15 +533,15 @@
             </a>
         </div>
         <div class="product">
-            <a href="javascript:void(0);" onclick="openImage('images/camille.png'); return false;">
-                <img src="images/Masque-covid.jpg">
-                <h3>Masque tendance 2020</h3>
-            </a>
-        </div>
-        <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/come-zorro.jpeg'); return false;">
                 <img src="images/Zorro.jpg">
                 <h3>Masque Zorro</h3>
+            </a>
+        </div>
+        <div class="product">
+            <a href="javascript:void(0);" onclick="openComment(); return false;">
+                <img src="images/Masque-covid.jpg">
+                <h3>Masque tendance 2020</h3>
             </a>
         </div>
         <div class="product">
@@ -485,6 +587,29 @@
                 <div class="carousel-nav" id="carouselNav">
                     <!-- Les points de navigation seront ajoutés dynamiquement par JavaScript -->
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay pour le commentaire -->
+    <div class="comment-overlay" id="commentOverlay">
+        <div class="comment-popup">
+            <button class="close-comment" onclick="closeComment()">&times;</button>
+            <div class="comment-header">
+                <img src="images/camille.png" alt="Avatar" class="comment-avatar">
+                <div class="comment-user">
+                    <h4 class="comment-username">Camille P.</h4>
+                    <p class="comment-date">Il y a 2 jours</p>
+                </div>
+            </div>
+            <div class="comment-stars">★★★★★</div>
+            <div class="comment-text">
+                Je recommande
+            </div>
+            <div class="comment-actions">
+                <span class="comment-action">👍 Utile (12)</span>
+                <span class="comment-action">💬 Répondre</span>
+                <span class="comment-action">🚩 Signaler</span>
             </div>
         </div>
     </div>
@@ -707,6 +832,16 @@
 
             // Vider le carousel
             carouselImages = [];
+        }
+
+        // Fonction pour ouvrir le popup de commentaire
+        function openComment() {
+            document.getElementById('commentOverlay').style.display = 'flex';
+        }
+
+        // Fonction pour fermer le popup de commentaire
+        function closeComment() {
+            document.getElementById('commentOverlay').style.display = 'none';
         }// Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
         document.addEventListener('DOMContentLoaded', function () {            // Pour l'overlay vidéo
             document.getElementById('videoOverlay').addEventListener('click', function (e) {
@@ -729,6 +864,14 @@
                 // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
                 if (e.target === this) {
                     closeImage();
+                }
+            });
+
+            // Pour l'overlay commentaire
+            document.getElementById('commentOverlay').addEventListener('click', function (e) {
+                // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
+                if (e.target === this) {
+                    closeComment();
                 }
             });              // Écouteur d'événement pour le bouton vendu
             document.getElementById('venduButton').addEventListener('click', function () {
@@ -759,6 +902,13 @@
                 if (document.getElementById('venduVideoOverlay').style.display === 'flex') {
                     if (e.key === "Escape") {
                         closeVenduVideo();
+                    }
+                }
+
+                // Si l'overlay commentaire est ouvert
+                if (document.getElementById('commentOverlay').style.display === 'flex') {
+                    if (e.key === "Escape") {
+                        closeComment();
                     }
                 }
             });
