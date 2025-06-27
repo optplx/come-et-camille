@@ -425,7 +425,7 @@
             <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>
         </div> <!-- section Mahaut -->
         <div class="product">
-            <a href="javascript:void(0);" onclick="openLicorneVideo(); return false;">
+            <a href="javascript:void(0);" onclick="openImage('images/Masque-licorne.jpg'); return false;">
                 <img src="images/Masque-licorne.jpg">
                 <h3>Masque licorne</h3>
             </a>
@@ -574,6 +574,9 @@
             }
             else if (imageSrc === 'images/buddha.webp') {
                 carouselImages = ['images/boudha1.jpeg', 'images/boudha2.jpeg'];
+            }
+            else if (imageSrc === 'images/Masque-licorne.jpg') {
+                carouselImages = ['video:images/dubsmash-licorne.mp4', 'images/cagole-come.jpeg'];
             } else {
                 // Pour les autres images, on affiche juste l'image demandée
                 carouselImages = [imageSrc];
