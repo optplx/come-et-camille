@@ -479,8 +479,10 @@
 
         <!-- section 4 -->
         <div class="product">
-            <img src="images/Bateau-laser.jpg">
-            <h3>Laser</h3>
+            <a href="javascript:void(0);" onclick="openImage('images/bateau.jpeg'); return false;">
+                <img src="images/laser.webp">
+                <h3>Laser</h3>
+            </a>
         </div>
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/buddha.webp'); return false;">
@@ -702,7 +704,7 @@
         // Fonction pour ouvrir l'image avec carousel
         function openImage(imageSrc) {
             if (imageSrc === 'images/come-zorro.png') {
-                carouselImages = ['images/come-zorro.png', 'images/batman.jpeg', 'images/zorro2.jpeg'];
+                carouselImages = ['images/come-zorro.png', 'images/come-zorro-2.png', 'images/batman.jpeg', 'images/zorro2.jpeg'];
             }
             else if (imageSrc === 'images/Judo-ceinture-marron.jpg') {
                 carouselImages = ['images/judo2.png', 'images/judo.jpeg'];
