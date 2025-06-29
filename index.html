@@ -585,8 +585,10 @@
             <img src="images/inline4.png">
         </div>
         <div class="product">
-            <img src="images/Badoit.jpg">
-            <h3>Eau Badoit</h3>
+            <a href="javascript:void(0);" onclick="openCoussinComment(); return false;">
+                <img src="images/coussin.webp">
+                <h3>Coussin péteur</h3>
+            </a>
         </div>
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/eplucher-tomates.jpeg'); return false;">
@@ -638,7 +640,7 @@
             </a>
         </div>
         <div class="product">
-            <a href="javascript:void(0);" onclick="openComment(); return false;">
+            <a href="javascript:void(0);" onclick="openMaskComment(); return false;">
                 <img src="images/Masque-covid.jpg">
                 <h3>Masque "Tendance 2020"</h3>
             </a>
@@ -693,7 +695,7 @@
     <!-- Overlay pour le commentaire -->
     <div class="comment-overlay" id="commentOverlay">
         <div class="comment-popup">
-            <button class="close-comment" onclick="closeComment()">&times;</button>
+            <button class="close-comment" onclick="closeMaskComment()">&times;</button>
             <div class="comment-header">
                 <img src="images/camille.png" alt="Avatar" class="comment-avatar">
                 <div class="comment-user">
@@ -707,6 +709,31 @@
             </div>
             <div class="comment-actions">
                 <span class="comment-action">👍 Utile (12)</span>
+                <span class="comment-action">💬 Répondre</span>
+                <span class="comment-action">🚩 Signaler</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay pour le commentaire coussin -->
+    <div class="comment-overlay" id="coussinCommentOverlay">
+        <div class="comment-popup">
+            <button class="close-comment" onclick="closeCoussinComment()">&times;</button>
+            <div class="comment-header">
+                <img src="images/camille.png" alt="Avatar" class="comment-avatar">
+                <div class="comment-user">
+                    <h4 class="comment-username">Camille P.</h4>
+                    <p class="comment-date">Il y a 1 heure</p>
+                </div>
+            </div>
+            <div class="comment-stars">
+                <span style="color: #ffd700;">★</span><span style="color: #ccc;">★★★★</span>
+            </div>
+            <div class="comment-text">
+                prout
+            </div>
+            <div class="comment-actions">
+                <span class="comment-action">👍 Utile (5)</span>
                 <span class="comment-action">💬 Répondre</span>
                 <span class="comment-action">🚩 Signaler</span>
             </div>
@@ -950,14 +977,24 @@
             carouselImages = [];
         }
 
-        // Fonction pour ouvrir le popup de commentaire
-        function openComment() {
+        // Fonction pour ouvrir le popup de commentaire masque
+        function openMaskComment() {
             document.getElementById('commentOverlay').style.display = 'flex';
         }
 
-        // Fonction pour fermer le popup de commentaire
-        function closeComment() {
+        // Fonction pour fermer le popup de commentaire masque
+        function closeMaskComment() {
             document.getElementById('commentOverlay').style.display = 'none';
+        }
+
+        // Fonction pour ouvrir le popup de commentaire coussin
+        function openCoussinComment() {
+            document.getElementById('coussinCommentOverlay').style.display = 'flex';
+        }
+
+        // Fonction pour fermer le popup de commentaire coussin
+        function closeCoussinComment() {
+            document.getElementById('coussinCommentOverlay').style.display = 'none';
         }// Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
         document.addEventListener('DOMContentLoaded', function () {            // Pour l'overlay vidéo
             document.getElementById('videoOverlay').addEventListener('click', function (e) {
@@ -987,7 +1024,15 @@
             document.getElementById('commentOverlay').addEventListener('click', function (e) {
                 // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
                 if (e.target === this) {
-                    closeComment();
+                    closeMaskComment();
+                }
+            });
+
+            // Pour l'overlay commentaire coussin
+            document.getElementById('coussinCommentOverlay').addEventListener('click', function (e) {
+                // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
+                if (e.target === this) {
+                    closeCoussinComment();
                 }
             });              // Écouteur d'événement pour le bouton vendu
             document.getElementById('venduButton').addEventListener('click', function () {
@@ -1024,7 +1069,14 @@
                 // Si l'overlay commentaire est ouvert
                 if (document.getElementById('commentOverlay').style.display === 'flex') {
                     if (e.key === "Escape") {
-                        closeComment();
+                        closeMaskComment();
+                    }
+                }
+
+                // Si l'overlay commentaire coussin est ouvert
+                if (document.getElementById('coussinCommentOverlay').style.display === 'flex') {
+                    if (e.key === "Escape") {
+                        closeCoussinComment();
                     }
                 }
             });
