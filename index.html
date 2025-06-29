@@ -135,6 +135,20 @@
             transition: box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
+        .product-wide {
+            grid-column: span 2;
+            padding: 0 !important;
+        }
+
+        .product-no-hover:hover img {
+            transform: none !important;
+        }
+
+        .product-wide img {
+            height: auto !important;
+            object-fit: cover !important;
+        }
+
         .product:hover {
             box-shadow: 0 0 15px rgba(44, 82, 130, 0.4);
             /* Ombre bleue floue au survol */
@@ -306,7 +320,7 @@
             position: fixed;
             top: 7px;
             right: 20px;
-            z-index: 1001;
+            z-index: 999;
             cursor: pointer;
             transition: transform 0.3s ease;
             background: transparent;
@@ -490,26 +504,9 @@
         </div>
 
         <!-- section 2 -->
-        <div class="product">
-            <a href="javascript:void(0);" onclick="openImage('images/sid.png'); return false;">
-                <img src="images/Age-de-glace-sid.jpg">
-                <h3>DVD L'âge de glace</h3>
-            </a>
+        <div class="product product-wide product-no-hover">
+            <img src="images/inline1.jpeg">
         </div>
-        <div class="product">
-            <img src="images/grease-dvd.jpg">
-            <h3>DVD Grease</h3>
-        </div>
-        <div class="product">
-            <img src="images/The-Mask.jpg">
-            <h3>DVD The Mask</h3>
-        </div>
-        <div class="product">
-                <img src="images/West-Side-Story-1961.jpg">
-                <h3>DVD West Side Story</h3>
-        </div>
-
-        <!-- section 3 -->
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/ipod.JPG'); return false;">
                 <img src="images/Cagole.jpg">
@@ -523,14 +520,39 @@
             </a>
         </div>
         <div class="product">
-            <img src="images/Ukulele.jpg">
-            <h3>Guitare</h3>
+            <a href="javascript:void(0);" onclick="openImage('images/sid.png'); return false;">
+                <img src="images/Age-de-glace-sid.jpg">
+                <h3>DVD L'âge de glace</h3>
+            </a>
+        </div>
+        <div class="product">
+            <img src="images/grease-dvd.jpg">
+            <h3>DVD Grease</h3>
+        </div>
+
+        <!-- section 3 -->
+        <div class="product">
+            <img src="images/The-Mask.jpg">
+            <h3>DVD The Mask</h3>
+        </div>
+        <div class="product">
+                <img src="images/West-Side-Story-1961.jpg">
+                <h3>DVD West Side Story</h3>
         </div>
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/boo.png'); return false;">
+                <img src="images/Ukulele.jpg">
+                <h3>Guitare</h3>
+            </a>
+        </div>
+        <div class="product">
+            <a href="javascript:void(0);" onclick="openImage('images/divers4.png'); return false;">
                 <img src="images/batterie.png">
                 <h3>Batterie</h3>
             </a>
+        </div>
+        <div class="product product-wide product-no-hover">
+            <img src="images/inline2.png">
         </div>
 
         <!-- section 4 -->
@@ -558,6 +580,9 @@
         </div>
 
         <!-- section 5 -->
+        <div class="product product-wide product-no-hover">
+            <img src="images/inline4.png">
+        </div>
         <div class="product">
             <img src="images/Badoit.jpg">
             <h3>Eau Badoit</h3>
@@ -593,7 +618,12 @@
         <div class="product">
             <img src="images/Tong-Gucci-d.png">
             <h3>Tong Goutchi pied droit - chaussette toujours pas incluse</h3>
-        </div> <!-- section Mahaut -->
+        </div> 
+        
+        <!-- section Mahaut -->
+        <div class="product product-wide product-no-hover">
+            <img src="images/inline3.jpeg">
+        </div>
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/Masque-licorne.jpg'); return false;">
                 <img src="images/Masque-licorne.jpg">
@@ -770,6 +800,8 @@
             }
             else if (imageSrc === 'images/Masque-licorne.jpg') {
                 carouselImages = ['video:images/dubsmash-licorne.mp4', 'images/cagole-come.jpeg'];
+            } else if (imageSrc === 'images/ipod.JPG') {
+                carouselImages = ['images/ipod2.jpeg', 'images/ipod.JPG', 'images/ipod3.jpeg'];
             } else {
                 // Pour les autres images, on affiche juste l'image demandée
                 carouselImages = [imageSrc];
