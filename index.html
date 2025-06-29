@@ -36,7 +36,7 @@
         }
 
         .hero {
-            background-image: url('images/fond-header.png');
+            background-image: url('images/banner.png');
             background-size: cover;
             background-position: center;
             height: 500px;
@@ -70,10 +70,9 @@
         .hero::after {
             content: "Collection Enfance Côme";
             position: absolute;
-            bottom: 80px;
-            left: 0;
-            right: 0;
-            text-align: center;
+            top: 80px;
+            left: 50px;
+            text-align: left;
             z-index: 2;
         }
 
@@ -405,9 +404,8 @@
             <a href="#">Camille</a>
         </nav>
     </header>
-    <div class="hero">
+    <div class="hero" onclick="openImage('images/naissance.jpg'); return false;" style="cursor: pointer;">
         <div class="hero-overlay">
-            <img src="images/come1.png" alt="Modèle" onclick="openImage('images/naissance.jpg'); return false;">
         </div>
     </div>
 
