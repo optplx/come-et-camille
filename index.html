@@ -17,6 +17,9 @@
             padding: 20px;
             text-align: center;
             border-bottom: 1px solid #ddd;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         header h1 {
@@ -74,6 +77,45 @@
             left: 50px;
             text-align: left;
             z-index: 2;
+        }
+
+        .breadcrumb {
+            background-color: #f8f9fa;
+            padding: 15px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #6c757d;
+        }
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb-item a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-item a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+        .breadcrumb-separator {
+            margin: 0 8px;
+            color: #adb5bd;
+        }
+
+        .breadcrumb-current {
+            color: #495057;
+            font-weight: 500;
         }
 
         .products {
@@ -262,9 +304,9 @@
         /* Style pour le bouton flottant "vendu" */
         .floating-button {
             position: fixed;
-            top: 0px;
+            top: 7px;
             right: 20px;
-            z-index: 100;
+            z-index: 1001;
             cursor: pointer;
             transition: transform 0.3s ease;
             background: transparent;
@@ -398,15 +440,31 @@
         <h1>GOUTCHI</h1>
         <nav>
             <a href="#">Nouveautés</a>
-            <a href="#">Homme</a>
-            <a href="#">Femme</a>
+            <a href="#">Mariage</a>
             <a href="#">Côme</a>
             <a href="#">Camille</a>
+            <a href="#">Enfants</a>
         </nav>
     </header>
     <div class="hero" onclick="openImage('images/naissance.jpg'); return false;" style="cursor: pointer;">
         <div class="hero-overlay">
         </div>
+    </div>
+
+    <div class="breadcrumb">
+        <nav class="breadcrumb-nav">
+            <div class="breadcrumb-item">
+                <a href="#">Accueil</a>
+            </div>
+            <div class="breadcrumb-separator">></div>
+            <div class="breadcrumb-item">
+                <a href="#">Collections</a>
+            </div>
+            <div class="breadcrumb-separator">></div>
+            <div class="breadcrumb-item breadcrumb-current">
+                Collection Enfance Côme
+            </div>
+        </nav>
     </div>
 
     <section class="products"> <!-- section 1 -->
@@ -489,8 +547,8 @@
             </a>
         </div>
         <div class="product">
-            <a href="javascript:void(0);" onclick="openImage('images/Judo-ceinture-marron.jpg'); return false;">
-                <img src="images/Judo-ceinture-marron.jpg">
+            <a href="javascript:void(0);" onclick="openImage('images/Judo-ceinture-marron.png'); return false;">
+                <img src="images/Judo-ceinture-marron.png">
                 <h3>Ceinture marron</h3>
             </a>
         </div>
@@ -704,7 +762,7 @@
             if (imageSrc === 'images/come-zorro.png') {
                 carouselImages = ['images/come-zorro.png', 'images/come-zorro-2.png', 'images/batman.jpeg', 'images/zorro2.jpeg'];
             }
-            else if (imageSrc === 'images/Judo-ceinture-marron.jpg') {
+            else if (imageSrc === 'images/Judo-ceinture-marron.png') {
                 carouselImages = ['images/judo2.png', 'images/judo.jpeg'];
             }
             else if (imageSrc === 'images/buddha.webp') {
