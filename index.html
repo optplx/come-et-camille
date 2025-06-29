@@ -526,8 +526,10 @@
             </a>
         </div>
         <div class="product">
-            <img src="images/grease-dvd.jpg">
-            <h3>DVD Grease</h3>
+            <a href="javascript:void(0);" onclick="openGreaseVideo(); return false;">
+                <img src="images/grease-dvd.jpg">
+                <h3>DVD Grease</h3>
+            </a>
         </div>
 
         <!-- section 3 -->
@@ -770,6 +772,21 @@
             const videoPlayer = document.getElementById('videoPlayer');
             const source = videoPlayer.querySelector('source');
             source.src = 'images/dubsmash-licorne.mp4';
+
+            // Recharger la vidéo pour appliquer la nouvelle source
+            videoPlayer.load();
+
+            // Afficher l'overlay et lancer la vidéo
+            document.getElementById('videoOverlay').style.display = 'flex';
+            videoPlayer.play();
+        }
+
+        // Fonction pour ouvrir la vidéo Grease
+        function openGreaseVideo() {
+            // Changer la source de la vidéo
+            const videoPlayer = document.getElementById('videoPlayer');
+            const source = videoPlayer.querySelector('source');
+            source.src = 'images/grease.mp4';
 
             // Recharger la vidéo pour appliquer la nouvelle source
             videoPlayer.load();
