@@ -158,6 +158,10 @@
             /* Bordure bleue semi-transparente */
         }
 
+        .product:hover .comment-overlay-text {
+            opacity: 1;
+        }
+
         .product img {
             width: 100%;
             height: 400px;
@@ -448,6 +452,35 @@
         .close-comment:hover {
             color: #333;
         }
+
+        /* Style pour le bouton "ouvrir les commentaires" */
+        .open-comments-button {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: "Playfair Display", serif;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .open-comments-button:hover {
+            background: rgba(0, 0, 0, 0.9);
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .open-comments-button span {
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -614,8 +647,8 @@
         </div>
         <div class="product">
             <a href="javascript:void(0);" onclick="openImage('images/ma-vie.jpeg'); return false;">
-                <img src="images/Couteaux.jpg">
-                <h3>Couteaux de cuisto</h3>
+                <img src="images/ma-vie.jpeg">
+                <h3>Ma vie mon oeuvre</h3>
             </a>
         </div>
 
@@ -652,13 +685,13 @@
             </a>
         </div>
         <div class="product">
-            <a href="javascript:void(0);" onclick="openVideo(); return false;">
+            <a href="javascript:void(0);" onclick="openImage('images/The-mask-masque.jpg'); return false;">
                 <img src="images/The-mask-masque.jpg">
                 <h3>Masque "Beauté fatale"</h3>
             </a>
         </div>
         <div class="product">
-            <a href="javascript:void(0);" onclick="openMaskComment(); return false;">
+            <a href="javascript:void(0);" onclick="openMaskImage(); return false;">
                 <img src="images/Masque-covid.jpg">
                 <h3>Masque "Tendance 2020"</h3>
             </a>
@@ -751,6 +784,18 @@
             </div>
         </div>
     </div>
+
+    <!-- Overlay pour l'image du masque covid -->
+    <div class="image-overlay" id="maskImageOverlay">
+        <div class="image-container">
+            <button class="close-image" onclick="closeMaskImage()">&times;</button>
+            <img src="images/Masque-covid.jpg" alt="Masque Tendance 2020" style="max-width: 100%; max-height: 80vh; object-fit: contain;">
+            <div class="open-comments-button" onclick="openMaskCommentFromImage()">
+                <span>💬 ouvrir les commentaires</span>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Déclarations de variables globales pour le carousel
         let carouselImages = [];
@@ -845,7 +890,7 @@
         // Fonction pour ouvrir l'image avec carousel
         function openImage(imageSrc) {
             if (imageSrc === 'images/come-zorro.png') {
-                carouselImages = ['images/come-zorro.png', 'images/come-zorro-2.png', 'images/batman.jpeg', 'images/zorro2.jpeg'];
+                carouselImages = ['images/Zorro.jpg', 'images/come-zorro.png', 'images/come-zorro-2.png', 'images/batman.jpeg', 'images/zorro2.jpeg'];
             }
             else if (imageSrc === 'images/Judo-ceinture-marron.png') {
                 carouselImages = ['images/judo2.png', 'images/judo.jpeg'];
@@ -854,9 +899,17 @@
                 carouselImages = ['images/boudha1.jpeg', 'images/boudha2.jpeg'];
             }
             else if (imageSrc === 'images/Masque-licorne.jpg') {
-                carouselImages = ['video:images/dubsmash-licorne.mp4', 'images/cagole-come.jpeg'];
+                carouselImages = ['images/Masque-licorne.jpg', 'video:images/dubsmash-licorne.mp4', 'images/cagole-come.jpeg'];
             } else if (imageSrc === 'images/ipod.JPG') {
                 carouselImages = ['images/ipod2.jpeg', 'images/ipod.JPG', 'images/ipod3.jpeg'];
+            } else if (imageSrc === 'images/eplucher-tomates.jpeg') {
+                carouselImages = ['images/Tomates.jpg', 'images/eplucher-tomates.jpeg'];
+            } else if (imageSrc === 'images/cornichons-2.jpeg') {
+                carouselImages = ['images/cornichons.jpeg', 'images/cornichons-2.jpeg'];
+            } else if (imageSrc === 'images/The-mask-masque.jpg') {
+                carouselImages = ['images/The-mask-masque.jpg', 'video:images/Montage-come-the-mask_short.mp4'];
+            } else if (imageSrc === 'images/Masque-covid.jpg') {
+                carouselImages = ['images/Masque-covid.jpg', 'comment:mask'];
             } else {
                 // Pour les autres images, on affiche juste l'image demandée
                 carouselImages = [imageSrc];
@@ -900,6 +953,32 @@
                     if (index === currentImageIndex) {
                         video.play();
                     }
+                } else if (src.startsWith('comment:')) {
+                    // Créer l'élément commentaire
+                    const commentContainer = document.createElement('div');
+                    commentContainer.className = 'carousel-image' + (index === currentImageIndex ? ' active' : '');
+                    commentContainer.style.display = 'flex';
+                    commentContainer.style.alignItems = 'center';
+                    commentContainer.style.justifyContent = 'center';
+                    commentContainer.style.height = '60vh';
+                    commentContainer.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+                    commentContainer.style.borderRadius = '15px';
+                    commentContainer.style.cursor = 'pointer';
+
+                    const commentText = document.createElement('div');
+                    commentText.style.color = 'white';
+                    commentText.style.fontSize = '24px';
+                    commentText.style.textAlign = 'center';
+                    commentText.style.fontFamily = "'Times New Roman', Times, serif";
+                    commentText.innerHTML = '💬<br>Voir les commentaires<br><small style="font-size: 14px;">Cliquez pour ouvrir</small>';
+
+                    commentContainer.appendChild(commentText);
+                    commentContainer.onclick = () => {
+                        closeImage();
+                        openMaskComment();
+                    };
+
+                    carouselImagesContainer.appendChild(commentContainer);
                 } else {
                     // Créer l'élément image
                     const img = document.createElement('img');
@@ -1007,7 +1086,27 @@
         // Fonction pour fermer le popup de commentaire coussin
         function closeCoussinComment() {
             document.getElementById('coussinCommentOverlay').style.display = 'none';
-        }// Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
+        }
+
+        // Fonction pour ouvrir l'image du masque
+        function openMaskImage() {
+            document.getElementById('maskImageOverlay').style.display = 'flex';
+        }
+
+        // Fonction pour fermer l'image du masque
+        function closeMaskImage() {
+            document.getElementById('maskImageOverlay').style.display = 'none';
+        }
+
+        // Fonction pour ouvrir les commentaires depuis l'image du masque
+        function openMaskCommentFromImage() {
+            // Fermer l'overlay de l'image
+            document.getElementById('maskImageOverlay').style.display = 'none';
+            // Ouvrir l'overlay de commentaire
+            document.getElementById('commentOverlay').style.display = 'flex';
+        }
+
+        // Ajouter des écouteurs d'événements pour fermer les overlays lors d'un clic à l'extérieur
         document.addEventListener('DOMContentLoaded', function () {            // Pour l'overlay vidéo
             document.getElementById('videoOverlay').addEventListener('click', function (e) {
                 // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
@@ -1046,7 +1145,17 @@
                 if (e.target === this) {
                     closeCoussinComment();
                 }
-            });              // Écouteur d'événement pour le bouton vendu
+            });
+
+            // Pour l'overlay image du masque
+            document.getElementById('maskImageOverlay').addEventListener('click', function (e) {
+                // Si le clic est sur l'overlay lui-même (pas sur ses enfants)
+                if (e.target === this) {
+                    closeMaskImage();
+                }
+            });
+
+            // Écouteur d'événement pour le bouton vendu
             document.getElementById('venduButton').addEventListener('click', function () {
                 // Ouvrir la vidéo spécifique pour le bouton vendu
                 document.getElementById('venduVideoOverlay').style.display = 'flex';
@@ -1089,6 +1198,13 @@
                 if (document.getElementById('coussinCommentOverlay').style.display === 'flex') {
                     if (e.key === "Escape") {
                         closeCoussinComment();
+                    }
+                }
+
+                // Si l'overlay image du masque est ouvert
+                if (document.getElementById('maskImageOverlay').style.display === 'flex') {
+                    if (e.key === "Escape") {
+                        closeMaskImage();
                     }
                 }
             });
